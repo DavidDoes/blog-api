@@ -8,15 +8,15 @@ const {BlogPosts} = require('./models');
 
 //create BlogPosts objects so we have something to work with
 BlogPosts.create(
-        'What could the shortest blog post ever be?',
-        'Pretty short, it turns out...',
-        'Lazy Luther',
+        'Override the Digital Divide',
+        'Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative thinking to further the overall value proposition. Organically grow the holistic world view of disruptive innovation via workplace diversity and empowerment.',
+        'Tech Bro',
         'July 8, 2018' //not working
 );
 BlogPosts.create(
-        'You will not believe what you find in here!',
-        'A lot of eye-grabbing nonsense!',
-        'Buzzfeed Freak',
+        'All the Finest Materials...',
+        'Boulevard sleepy ryokan, concierge ANA cutting-edge Tsutaya emerging lovely espresso the best Gaggenau. Business class essential smart exquisite global boulevard pintxos. Nordic hand-crafted intricate perfect, conversation hub Melbourne espresso sharp bespoke carefully curated cosy Helsinki. Charming uniforms boulevard alluring sophisticated, craftsmanship ANA pintxos emerging. Boutique hand-crafted hub, sharp soft power emerging exquisite premium Baggu intricate quality of life remarkable.',
+        'Artisinal Artisian',
         'July 1, 2018' //not working
 );
 
