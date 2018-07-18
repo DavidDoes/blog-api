@@ -43,7 +43,7 @@ router.post('/', jsonParser, (req, res) => { //working
 
 //
 router.put('/:id', jsonParser, (req, res) => { //not working 500 error [object Object]
-    const requiredFields = ['id', 'title', 'content'];
+    const requiredFields = ['title', 'content', 'id']; //, 'title', 'content'
     for (let i=0; i<requiredFields.length; i++) {
         const field = requiredFields[i];
         if (!(field in req.body)) {
@@ -51,20 +51,20 @@ router.put('/:id', jsonParser, (req, res) => { //not working 500 error [object O
             console.error(message);
             return res.status(400).send(message);
         }
-        }
-        if (req.params.id !== req.body.id) {
+    }
+    if (req.params.id !== req.body.id) {
         const message = (
             `Request path id (${req.params.id}) and request body id `
             `(${req.body.id}) must match`);
         console.error(message);
         return res.status(400).send(message);
-        }
+    }
     console.log(`Updating blog post \`${req.params.id}\``);
     const updatedItem = BlogPosts.update({
         id: req.params.id,
         title: req.body.name,
         content: req.body.content,
-        author: req.body.author
+        // author: req.body.author
     });
     res.status(204).end();
 })
