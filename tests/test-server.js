@@ -30,16 +30,16 @@ describe('Blog Posts', function(){
             })
     })
     it('should add blog post on POST', function(){ //error: Missing `title` in request body
-        const newItem = {id: 'Great blog post title', content: 'lorem ipsum'}
+        const newPost = {title: 'Great post title', content: 'lorem ipsum'}
         return chai
             .request(app)
             .post('/blog-posts')
-            .send(newItem)
+            .send(newPost)
             .then(function(res){
                 expect(res).to.have.status(201)
                 expect(res).to.be.json
                 expect(res.body).to.be.a('object')
-                expect(res.body).to.include.keys('content', 'author', 'publishDate')
+                expect(res.body).to.include.keys('title', 'content', 'author', 'publishDate')
             })
     })
     it('should updated post on PUT', function(){ //error: Missing `title` in request body

@@ -28,7 +28,7 @@ router.get('/', (req, res) => {
 //verify required fields present, if not log error return 400
 //if okay add new item return 201
 router.post('/', jsonParser, (req, res) => { 
-    const requiredFields = [];
+    const requiredFields = ['title', 'content', 'author'];
     for (let i = 0; i < requiredFields.length; i++){
         const field = requiredFields[i];
         if (!(field in req.body)){
