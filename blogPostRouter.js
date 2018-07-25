@@ -28,7 +28,7 @@ router.get('/', (req, res) => {
 //verify required fields present, if not log error return 400
 //if okay add new item return 201
 router.post('/', jsonParser, (req, res) => { 
-    const requiredFields = ['title', 'content', 'author'];
+    const requiredFields = [];
     for (let i = 0; i < requiredFields.length; i++){
         const field = requiredFields[i];
         if (!(field in req.body)){
@@ -37,7 +37,7 @@ router.post('/', jsonParser, (req, res) => {
             return res.status(400).send(message);
         }
     }
-    const item = BlogPosts.create(req.body.name, req.body.content, req.body.author);
+    const item = BlogPosts.create(req.body.title, req.body.content, req.body.author);
     res.status(201).json(item);
 });
 
@@ -62,7 +62,7 @@ router.put('/:id', jsonParser, (req, res) => {
     console.log(`Updating blog post \`${req.params.id}\``);
     const updatedItem = BlogPosts.update({
         id: req.params.id,
-        title: req.body.name,
+        title: req.body.title,
         content: req.body.content,
         // author: req.body.author
     });

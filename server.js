@@ -1,5 +1,3 @@
-'use strict';
-
 const express = require('express');
 const morgan = require('morgan');
 
@@ -10,9 +8,13 @@ const blogPostRouter = require('./blogPostRouter');
 app.use(express.json());
 app.use(morgan('common'));
 
-app.get('/', (req, res) => {
-    res.send('hello');
-});
+// app.get('/', (req, res) => {
+//     res.send('hello');
+// });
+
+// requests to `/blog-posts` will be routed to express router instance
+app.use('/blog-posts', blogPostRouter); //(url endpoint, js file)
+
 //declare empty variable 
 let server;
 
@@ -34,7 +36,7 @@ function runServer(){
 //return Promise manually
 function closeServer(){
     return new Promise((resolve, reject) => {
-        console.loge('Closing server')
+        console.log('Closing server')
         server.close(err => {
             if(err){
                 reject(err) //don't call resolve 
@@ -50,9 +52,6 @@ function closeServer(){
 if (require.main === module){
     runServer().catch(err => console.error(err));
 }
-
-// requests to `/blog-posts` will be routed to express router instance
-app.use('/blog-posts', blogPostRouter); //(url endpoint, js file)
 
 //don't need app.listen due to line 21 in runServer()
 // app.listen(process.env.PORT || 8080, () => {
